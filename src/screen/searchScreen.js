@@ -37,9 +37,13 @@ class Search extends Component {
     });
   }
   handleShow = (e) => {
-    
+    // console.log(id, index);
     this.setState({
       show: true,
+      // listCustomersFilter: [
+      //   ...listCustomersFilter.slice(0, index),
+      //   ...listCustomersFilter.slice(index + 1),
+      // ],
     });
   };
   handleCloseSave = (e) => {

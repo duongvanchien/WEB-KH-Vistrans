@@ -48,6 +48,7 @@ const Header = (props) => {
           <NavItem className="menu">
             <Row>
               <Col sm="2">
+                {" "}
                 <NavLink>
                   <Link
                     to="/"
@@ -76,7 +77,7 @@ const Header = (props) => {
                     style={pathname == "/tracuu" ? styles : {}}
                     onClick={() => setState("tracuu")}
                   >
-                    TRA CỨU ĐƠN HÀNGG
+                    TRA CỨU ĐƠN HÀNG
                   </Link>
                 </NavLink>{" "}
               </Col>

@@ -92,7 +92,6 @@ class Search extends Component {
       });
     }
   };
-  asdasdsadsadsad
   render() {
     const { customers } = this.props;
     const { listCustomers } = this.state;

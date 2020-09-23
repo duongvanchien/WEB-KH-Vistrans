@@ -46,7 +46,7 @@ export default class Price extends Component {
                 <tr>
                   <td>6</td>
                   <td>Xuất Ngoại</td>
-                  <td>1.000.000</td>
+                  <td>10.000.000</td>
                 </tr>
 
               </tbody>

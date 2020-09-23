@@ -7,7 +7,7 @@ export default class Intro extends Component{
     render(){
         return(
             <div className="intro-margin">            
-                    <img src={header}></img>
+                    <img src={header} alt= "header" ></img>
                     <div className="intro">
                         <div className="sub">
                             <h2 style={{textAlign: "center"}}>GIỚI THIỆU VINTRANS</h2>

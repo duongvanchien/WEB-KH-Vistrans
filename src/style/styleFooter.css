@@ -27,3 +27,8 @@
     width: 50%;
     border-bottom: 1px solid white;
 }
+/* .flex-end{
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+} */

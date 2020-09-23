@@ -21,13 +21,13 @@ export default class Home extends Component {
     render() {
         return (
             <div className="home">
-                <img src={header}></img>
+                <img src={header} alt="header"></img>
                 <h2>TẠI SAO NÊN CHỌN VINTRANS</h2>
                 <Container className="container">
                     <Row>
                         <Col md="3">
                             <div>
-                                <img src={icon_1} style={{maxWidth: "56px",float:"left"}}></img>
+                                <img src={icon_1} alt="icon_1" style={{maxWidth: "56px",float:"left"}}></img>
                                 <span><strong>VẬN CHUYỂN HÀNG HÓA NHANH CHÓNG AN TOÀN</strong></span>
                             </div>
                             <br/>    
@@ -36,7 +36,7 @@ export default class Home extends Component {
 
                         <Col md="3">
                             <div>
-                                <img src={icon_2} style={{maxWidth: "56px",float:"left"}}></img>
+                                <img src={icon_2} alt="icon_2" style={{maxWidth: "56px",float:"left"}}></img>
                                 <span><strong>VẬN CHUYỂN HÀNG HÓA NHANH CHÓNG AN TOÀN</strong></span>
                             </div>
                             <br/>    
@@ -45,7 +45,7 @@ export default class Home extends Component {
 
                         <Col md="3">
                             <div>
-                                <img src={icon_3} style={{maxWidth: "56px",float:"left"}}></img>
+                                <img src={icon_3} alt="icon_3" style={{maxWidth: "56px",float:"left"}}></img>
                                 <span><strong>VẬN CHUYỂN HÀNG HÓA NHANH CHÓNG AN TOÀN</strong></span>
                             </div>
                             <br/>    
@@ -54,7 +54,7 @@ export default class Home extends Component {
 
                         <Col md="3">
                             <div>
-                                <img src={icon_4} style={{maxWidth: "56px",float:"left"}}></img>
+                                <img src={icon_4} alt="icon_4"style={{maxWidth: "56px",float:"left"}}></img>
                                 <span><strong>VẬN CHUYỂN HÀNG HÓA NHANH CHÓNG AN TOÀN</strong></span>
                             </div>
                             <br/>    

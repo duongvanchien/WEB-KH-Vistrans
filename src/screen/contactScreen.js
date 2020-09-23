@@ -3,7 +3,7 @@ import '../style/styleContact.css';
 import {Icon} from 'react-icons-kit';
 import {locationArrow} from 'react-icons-kit/fa/locationArrow'
 
-import { Container, Row, Col, ButtonGroup } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import { Button } from 'reactstrap';
 import { Form, FormGroup, Input } from 'reactstrap';
 

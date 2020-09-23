@@ -1,48 +1,40 @@
 import React, { Component } from "react";
-import { Container, Col, Row, Button } from "reactstrap";
-import { FormGroup, Input } from "reactstrap";
-import { Link } from "react-router-dom";
 import callAPI from "../API/callAPI";
-
-import "../style/styleAdd.css";
-
-export default class Add extends Component {
+import { Row, Col, FormGroup, Input, Container, Button } from "reactstrap";
+import { Link } from "react-router-dom";
+class Change extends Component {
   constructor() {
     super();
     this.state = {
+      listCustomers: [],
+      table_1: true,
       CodeOrders: "",
-      MaDonHang: "",
-      KhachHang: "",
-      SoDienThoai: "",
-      GomHang: "",
-      PhiVanChuyen: "",
-      TrangThaiTD: "",
-      NgayGui: "",
+      nameK: "",
+      phone: "",
+      nameG: "",
+      cost: "",
+      status: "",
+      date: "",
     };
   }
-  OnClick = (event) => {
-    var {
-      MaDonHang,
-      KhachHang,
-      SoDienThoai,
-      GomHang,
-      PhiVanChuyen,
-      TrangThaiTD,
-      NgayGui,
-    } = this.state;
-    var {history} =  this.props;
-    callAPI("order", "POST", {
-      CodeOrders: MaDonHang,
-      nameK: KhachHang,
-      phone: SoDienThoai,
-      nameG: GomHang,
-      cost: PhiVanChuyen,
-      status: TrangThaiTD,
-      date: NgayGui,
-    }).then((res) => {
-      history.goBack();
+  componentDidMount() {
+    //    console.log(this.props.match.params.id)
+    callAPI("order", "GET", null).then((res) => {
+      const Change = res.data.filter(
+        (value) => value.id == Number(this.props.match.params.id)
+      );
+        // console.log(Change);
+      this.setState({
+        CodeOrders: Change[0].CodeOrders,
+        nameK: Change[0].nameK,
+        phone: Change[0].phone,
+        nameG: Change[0].nameG,
+        cost: Change[0].cost,
+        status: Change[0].status,
+        date: Change[0].date,
+      });
     });
-  };
+  }
   onChange = (event) => {
     var target = event.target;
     var name = target.name;
@@ -51,28 +43,38 @@ export default class Add extends Component {
       [name]: value,
     });
   };
+  OnClick = (event) => {
+    var id = this.props.match.params.id;
+    var { history } = this.props;
+    console.log(id);
+    var { CodeOrders, nameK, phone, nameG, cost, status, date } = this.state;
+    callAPI(`order/${id}`, "PUT", {
+      CodeOrders: CodeOrders,
+      nameK: nameK,
+      phone: phone,
+      nameG: nameG,
+      cost: cost,
+      status: status,
+      date: date,
+    }).then((res) => {
+      history.goBack();
+    });
+  };
   render() {
-    var {
-      MaDonHang,
-      KhachHang,
-      SoDienThoai,
-      GomHang,
-      PhiVanChuyen,
-      TrangThaiTD,
-      NgayGui,
-    } = this.state;
+    const { CodeOrders, nameK, phone, nameG, cost, status, date } = this.state;
     return (
       <Container className="add">
         <h4>Đơn Hàng</h4>
         <Container>
+          
           <Row>
             <Col>
               <FormGroup>
                 <Input
                   type="text"
-                  placeholder="Mã đơn hàng"
-                  name="MaDonHang"
-                  value={MaDonHang}
+                  placeholder="Nhập Mã Đơn"
+                  name="CodeOrders"
+                  value={CodeOrders}
                   onChange={this.onChange}
                 />
               </FormGroup>
@@ -83,9 +85,9 @@ export default class Add extends Component {
               <FormGroup>
                 <Input
                   type="text"
-                  placeholder="Khách hàng"
-                  name="KhachHang"
-                  value={KhachHang}
+                  placeholder="Tên Khách"
+                  name="nameK"
+                  value={nameK}
                   onChange={this.onChange}
                 />
               </FormGroup>
@@ -93,10 +95,10 @@ export default class Add extends Component {
             <Col>
               <FormGroup>
                 <Input
-                  type="number"
-                  placeholder="Số điện thoại"
-                  name="SoDienThoai"
-                  value={SoDienThoai}
+                  type="text"
+                  placeholder="Số Điện Thoại"
+                  name="phone"
+                  value={phone}
                   onChange={this.onChange}
                 />
               </FormGroup>
@@ -107,9 +109,9 @@ export default class Add extends Component {
               <FormGroup>
                 <Input
                   type="text"
-                  placeholder="Gom hàng"
-                  name="GomHang"
-                  value={GomHang}
+                  placeholder="Tên Gom"
+                  name="nameG"
+                  value={nameG}
                   onChange={this.onChange}
                 />
               </FormGroup>
@@ -118,9 +120,9 @@ export default class Add extends Component {
               <FormGroup>
                 <Input
                   type="text"
-                  placeholder="Phí vận chuyển"
-                  name="PhiVanChuyen"
-                  value={PhiVanChuyen}
+                  placeholder="Giá Thành"
+                  name="cost"
+                  value={cost}
                   onChange={this.onChange}
                 />
               </FormGroup>
@@ -131,9 +133,9 @@ export default class Add extends Component {
               <FormGroup>
                 <Input
                   type="text"
-                  placeholder="Trạng thái TĐ"
-                  name="TrangThaiTD"
-                  value={TrangThaiTD}
+                  placeholder="Trạng Thái"
+                  name="status"
+                  value={status}
                   onChange={this.onChange}
                 />
               </FormGroup>
@@ -141,10 +143,10 @@ export default class Add extends Component {
             <Col>
               <FormGroup>
                 <Input
-                  type="date"
-                  placeholder="Ngày gửi"
-                  name="NgayGui"
-                  value={NgayGui}
+                  type="text"
+                  placeholder="Ngày Gửi"
+                  name="date"
+                  value={new Date(date).toString()}
                   onChange={this.onChange}
                 />
               </FormGroup>
@@ -160,7 +162,6 @@ export default class Add extends Component {
             </Link>
           </Col>
           <Col>
-            {/* <Link to="/tracuu" style={{ textDecoration: "none" }}> */}
             <Button
               type="submit"
               color="success"
@@ -169,10 +170,10 @@ export default class Add extends Component {
             >
               Lưu
             </Button>
-            {/* </Link> */}
           </Col>
         </Row>
       </Container>
     );
   }
 }
+export default Change;
